@@ -1,0 +1,40 @@
+Filip:
+
+Project structure setup and Makefile
+Main loop and signal handling
+Parser implementation
+Environment variable handling
+Built-ins: cd, pwd, export, unset
+Integration testing
+
+Ghani:
+
+Lexer (tokenization)
+Command execution and path resolution
+Pipe handling
+Redirections (<, >, >>, <<)
+Built-ins: echo, env, exit
+Error handling utilities
+
+Git Branching Strategy:
+
+main branch: Contains stable, working code
+dev branch: Development branch for integration
+Feature branches:
+
+feature/parser
+feature/executor
+feature/builtins
+feature/signals
+etc.
+
+
+
+Workflow:
+
+Create feature branches from dev
+Work on features independently
+Make regular commits with clear messages
+Create pull requests to merge into dev
+Test thoroughly on dev
+Merge stable features into main
