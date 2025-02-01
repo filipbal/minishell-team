@@ -2,10 +2,7 @@ minishell/
 ├── Makefile
 ├── includes/
 │   └── minishell.h
-├── libft/          
-│   ├── Makefile
-│   ├── includes/
-│   └── srcs/
+├── libft/
 └── srcs/
     ├── main.c
     ├── builtins/
