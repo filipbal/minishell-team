@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 15:15:12 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/01/31 13:52:05 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/02/07 12:50:52 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -24,5 +24,16 @@
 # include <limits.h>
 # include <errno.h>
 # include <signal.h>
+# include <readline/readline.h>
+# include <readline/history.h>
+
+# define PROMPT "minishell$ "
+
+typedef struct s_shell
+{
+	char	*input;
+	int		exit_status;
+	int		running;
+}	t_shell;
 
 #endif
