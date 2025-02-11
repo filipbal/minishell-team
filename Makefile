@@ -10,40 +10,41 @@
 #                                                                              #
 #******************************************************************************#
 
-NAME		= minishell
+NAME        = minishell
 
-CC			= cc
-CFLAGS		= -Wall -Wextra -Werror
-RM			= rm -f
+CC          = cc
+CFLAGS      = -Wall -Wextra -Werror
+RM          = rm -f
 
-SRCS		= srcs/main.c
+SRCS        = srcs/main.c
 
-OBJS		= $(SRCS:.c=.o)
+OBJS        = $(SRCS:.c=.o)
 
-LIBFT		= libft
-LIBFT_A		= $(LIBFT)/libft.a
+LIBFT       = libft
+LIBFT_A     = $(LIBFT)/libft.a
 
-INCLUDES	= -I./includes -I./$(LIBFT)
+INCLUDES    = -I./includes -I./$(LIBFT)
+LFLAGS      = -lreadline
 
-all:		$(NAME)
+all:        $(NAME)
 
 $(LIBFT_A):
 			make -C $(LIBFT)
 
-$(NAME):	$(LIBFT_A) $(OBJS)
-			$(CC) $(CFLAGS) $(OBJS) $(LIBFT_A) -o $(NAME)
+$(NAME):    $(LIBFT_A) $(OBJS)
+			$(CC) $(CFLAGS) $(OBJS) $(LIBFT_A) $(LFLAGS) -o $(NAME)
 
-%.o:		%.c
+%.o:        %.c
 			$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
 			make clean -C $(LIBFT)
 			$(RM) $(OBJS)
 
-fclean:		clean
+fclean:     clean
 			make fclean -C $(LIBFT)
 			$(RM) $(NAME)
 
-re:			fclean all
+re:         fclean all
 
-.PHONY:		all clean fclean re
+.PHONY:     all clean fclean re
