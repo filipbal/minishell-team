@@ -6,7 +6,7 @@
 /*   By: ghani <ghani@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 15:19:50 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/02/16 22:54:09 by ghani            ###   ########.fr       */
+/*   Updated: 2025/02/27 21:45:55 by ghani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	tokenize(t_shell *shell)
 			shell->tokens[token_index] = (char *)malloc(length + 1);
 			if (!shell->tokens[token_index])
 			{
-				perror("Failed to allocate memory");
+				perror("Failed to allocate memory\n");
 				exit(1);
 			}
 			ft_strlcpy(shell->tokens[token_index], ptr + start, length + 1);

@@ -6,7 +6,7 @@
 /*   By: ghani <ghani@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 15:15:12 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/02/16 22:26:35 by ghani            ###   ########.fr       */
+/*   Updated: 2025/02/27 21:45:09 by ghani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,21 @@
 # define PROMPT "minishell$ "
 # define MAX_TOKENS 64
 
+typedef enum
+{
+	UNDEFINED,
+	OPERATOR,
+	COMMAND,
+	VARIABLE,
+	SINGLE_QUOTE,
+	DOUBLE_QUOTE
+}	t_type;
+
 typedef struct s_shell
 {
 	char	*input;
 	char	*tokens[MAX_TOKENS];
+	t_type	token_type[MAX_TOKENS];
 	int		exit_status;
 	int		running;
 }	t_shell;
@@ -45,5 +56,14 @@ int		process_input(t_shell *shell);
 
 void	tokenize(t_shell *shell);
 void	find_tokens(char *ptr, int *i, int *start, int *length);
+void	get_token_type(t_shell *shell);
+void	get_token_type_2(t_shell *shell, int i);
+void	check_tokens(t_shell *shell);
+
+int		ft_strcmp(char *s1, char *s2);
+
+
+
+const char *token_type_to_string(t_type type);
 
 #endif
