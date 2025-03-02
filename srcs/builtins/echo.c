@@ -6,11 +6,11 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 15:18:50 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/03/02 15:29:22 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/03/02 16:01:28 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 /*
 ** is_n_flag: Checks if the given argument is a valid -n flag
