@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 15:15:53 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/03/02 15:44:46 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/03/02 15:48:25 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -125,7 +125,7 @@ int	main(int argc, char **argv, char **env)
 		shell.input = NULL;
 		// Next two lines are for testing purposes only
 		for(int i = 0; shell.tokens[i]; i++)
-			printf("%s\n", shell.tokens[i]);
+			printf("Token %d: [%s]\n", i, shell.tokens[i]);
 		cleanup_shell(&shell);
 	}
 	rl_clear_history();
