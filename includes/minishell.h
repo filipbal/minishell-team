@@ -6,7 +6,7 @@
 /*   By: ghani <ghani@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 15:15:12 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/02/27 21:45:09 by ghani            ###   ########.fr       */
+/*   Updated: 2025/03/02 10:47:53 by ghani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # include <signal.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+# include <termios.h>
 
 # define PROMPT "minishell$ "
 # define MAX_TOKENS 64
@@ -49,6 +50,11 @@ typedef struct s_shell
 	int		exit_status;
 	int		running;
 }	t_shell;
+
+/* Signal handling */
+extern volatile sig_atomic_t g_signal_received;
+void	signal_handler(int signo);
+void	setup_signals(void);
 
 void	init_shell(t_shell *shell);
 void	cleanup_shell(t_shell *shell);

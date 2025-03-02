@@ -6,7 +6,7 @@
 /*   By: ghani <ghani@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 15:15:53 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/02/27 22:36:01 by ghani            ###   ########.fr       */
+/*   Updated: 2025/03/02 10:44:10 by ghani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int	main(void)
 {
 	t_shell		shell;
 
+	setup_signals(); // Initialize signal handlers for proper Ctrl+C, Ctrl+D and Ctrl+\ behavior
 	shell.running = 1;
 	while (shell.running)
 	{
