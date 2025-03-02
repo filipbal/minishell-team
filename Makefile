@@ -6,7 +6,7 @@
 #    By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/27 15:12:46 by fbalakov          #+#    #+#              #
-#    Updated: 2025/03/01 09:22:08 by fbalakov         ###   ########.fr        #
+#    Updated: 2025/03/02 14:42:37 by fbalakov         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -16,7 +16,8 @@ CC          = cc
 CFLAGS      = -Wall -Wextra -Werror
 RM          = rm -f
 
-SRCS        = srcs/main.c srcs/parser/lexer.c srcs/signals/signals.c
+SRCS        = srcs/main.c srcs/parser/lexer.c srcs/signals/signals.c \
+              srcs/builtins/pwd.c
 
 OBJS        = $(SRCS:.c=.o)
 

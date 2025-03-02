@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 15:15:53 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/03/01 10:24:47 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/03/02 14:43:49 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -68,6 +68,12 @@ int	main(void)
 			break ;
 		}
 		tokenize(&shell);
+		if (shell.tokens[0])
+		{
+			if (!ft_strncmp(shell.tokens[0], "pwd", 4))
+				ft_pwd(&shell);
+			// We'll add other builtins later
+		}
 		free(shell.input);
 		shell.input = NULL;
 		// Next two lines are for testing purposes only

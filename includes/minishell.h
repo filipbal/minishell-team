@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 15:15:12 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/03/01 09:43:38 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/03/02 14:42:18 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -51,5 +51,8 @@ int		process_input(t_shell *shell);
 
 void	tokenize(t_shell *shell);
 void	find_tokens(char *ptr, int *i, int *start, int *length);
+
+/* Builtins */
+int	ft_pwd(t_shell *shell);
 
 #endif
