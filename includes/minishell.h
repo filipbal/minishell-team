@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 15:15:12 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/03/02 14:42:18 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/03/02 15:06:35 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -36,6 +36,7 @@ typedef struct s_shell
 {
 	char	*input;
 	char	*tokens[MAX_TOKENS];
+	char	**env;          /* Environment variables */
 	int		exit_status;
 	int		running;
 }	t_shell;
@@ -45,14 +46,18 @@ extern volatile sig_atomic_t g_signal_received;
 void	signal_handler(int signo);
 void	setup_signals(void);
 
+/* Shell initialization and cleanup */
 void	init_shell(t_shell *shell);
+void	init_env(t_shell *shell, char **env);
 void	cleanup_shell(t_shell *shell);
 int		process_input(t_shell *shell);
 
+/* Lexer and parser */
 void	tokenize(t_shell *shell);
 void	find_tokens(char *ptr, int *i, int *start, int *length);
 
 /* Builtins */
-int	ft_pwd(t_shell *shell);
+int		ft_pwd(t_shell *shell);
+int		ft_env(t_shell *shell);
 
 #endif

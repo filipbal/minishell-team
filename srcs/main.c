@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 15:15:53 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/03/02 14:43:49 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/03/02 15:04:11 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -52,11 +52,54 @@ int	process_input(t_shell *shell)
 	return (1);
 }
 
-int	main(void)
+/*
+** init_env: Initialize environment variables for the shell
+** Makes a copy of the system environment
+** @param shell: The shell structure
+** @param env: The system environment
+*/
+void	init_env(t_shell *shell, char **env)
+{
+	int	i;
+	int	env_count;
+
+	env_count = 0;
+	while (env[env_count])
+		env_count++;
+	
+	shell->env = (char **)malloc(sizeof(char *) * (env_count + 1));
+	if (!shell->env)
+	{
+		ft_putstr_fd("minishell: memory allocation error\n", STDERR_FILENO);
+		exit(1);
+	}
+	
+	i = 0;
+	while (i < env_count)
+	{
+		shell->env[i] = ft_strdup(env[i]);
+		if (!shell->env[i])
+		{
+			ft_putstr_fd("minishell: memory allocation error\n", STDERR_FILENO);
+			// Free allocated memory before exiting
+			while (--i >= 0)
+				free(shell->env[i]);
+			free(shell->env);
+			exit(1);
+		}
+		i++;
+	}
+	shell->env[env_count] = NULL;
+}
+
+int	main(int argc, char **argv, char **env)
 {
 	t_shell		shell;
 
+	(void)argc;
+	(void)argv;
 	setup_signals(); // Initialize signal handlers for proper Ctrl+C, Ctrl+D and Ctrl+\ behavior
+	init_env(&shell, env);
 	shell.running = 1;
 	while (shell.running)
 	{
@@ -72,6 +115,8 @@ int	main(void)
 		{
 			if (!ft_strncmp(shell.tokens[0], "pwd", 4))
 				ft_pwd(&shell);
+			else if (!ft_strncmp(shell.tokens[0], "env", 4))
+				ft_env(&shell);
 			// We'll add other builtins later
 		}
 		free(shell.input);
@@ -82,5 +127,15 @@ int	main(void)
 		cleanup_shell(&shell);
 	}
 	rl_clear_history();
+	
+	// Free environment before exiting
+	if (shell.env)
+	{
+		int i = 0;
+		while (shell.env[i])
+			free(shell.env[i++]);
+		free(shell.env);
+	}
+	
 	return (shell.exit_status);
 }
