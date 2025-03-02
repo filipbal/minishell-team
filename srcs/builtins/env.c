@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 15:18:58 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/03/02 15:10:49 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/03/02 15:54:00 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -29,21 +29,17 @@ int	ft_env(t_shell *shell)
 		shell->exit_status = 1;
 		return (1);
 	}
-	
-	// We need to have the environment in the shell structure
 	if (!shell->env)
 	{
 		ft_putstr_fd("env: environment not available\n", STDERR_FILENO);
 		shell->exit_status = 1;
 		return (1);
 	}
-	
 	while (shell->env[i])
 	{
 		ft_putendl_fd(shell->env[i], STDOUT_FILENO);
 		i++;
 	}
-	
 	shell->exit_status = 0;
 	return (0);
 }
