@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 15:15:12 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/03/02 15:06:35 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/03/02 15:29:42 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -59,5 +59,6 @@ void	find_tokens(char *ptr, int *i, int *start, int *length);
 /* Builtins */
 int		ft_pwd(t_shell *shell);
 int		ft_env(t_shell *shell);
+int		ft_echo(t_shell *shell);
 
 #endif

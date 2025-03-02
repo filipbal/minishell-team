@@ -6,7 +6,7 @@
 /*   By: fbalakov <fbalakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 15:15:53 by fbalakov          #+#    #+#             */
-/*   Updated: 2025/03/02 15:04:11 by fbalakov         ###   ########.fr       */
+/*   Updated: 2025/03/02 15:44:46 by fbalakov         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -117,6 +117,8 @@ int	main(int argc, char **argv, char **env)
 				ft_pwd(&shell);
 			else if (!ft_strncmp(shell.tokens[0], "env", 4))
 				ft_env(&shell);
+			else if (!ft_strncmp(shell.tokens[0], "echo", 5))
+				ft_echo(&shell);
 			// We'll add other builtins later
 		}
 		free(shell.input);
